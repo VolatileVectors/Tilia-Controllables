@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 8972421161141143531, guid: a8ac9b37a635c2f41bb96ce4c8c10fe0,
         type: 3}
       propertyPath: m_Layer
-      value: 24
+      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8ac9b37a635c2f41bb96ce4c8c10fe0, type: 3}
@@ -533,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 8972421161141143531, guid: a8ac9b37a635c2f41bb96ce4c8c10fe0,
         type: 3}
       propertyPath: m_Layer
-      value: 24
+      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8ac9b37a635c2f41bb96ce4c8c10fe0, type: 3}
@@ -1188,16 +1188,6 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionStarted.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3532827543598041661, guid: dbc3e1306ba86164da3699a77403480b,
-        type: 3}
-      propertyPath: StepValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3532827543598041661, guid: dbc3e1306ba86164da3699a77403480b,
-        type: 3}
-      propertyPath: StepValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4833551224345216054, guid: dbc3e1306ba86164da3699a77403480b,
         type: 3}
