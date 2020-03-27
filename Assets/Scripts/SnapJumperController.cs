@@ -15,7 +15,6 @@ public class SnapJumperController : MonoBehaviour
 
     public void SetLastDropZone(GameObject lastDropZone)
     {
-        Debug.Log("Snapped jumper to: " + lastDropZone.name);
         dropZone = lastDropZone.GetComponent<SnapZoneFacade>();
     }
 
