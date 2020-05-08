@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e815bdd2ee247458d0b3cf2598b318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Panel
-  Lights: []
-  StateChangeCue: {fileID: 11400000, guid: 62f6ec29900de5b4291fbd491516198c, type: 2}
-  StateChangedEvent:
+  panelName: Panel
+  lights: []
+  stateChangeCue: {fileID: 11400000, guid: 62f6ec29900de5b4291fbd491516198c, type: 2}
+  stateChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   SnapJumper: {fileID: 3779527789858911393}
@@ -469,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 4527189466248270098, guid: fc15b254bd472e949af8b1b931d6ca6d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.282
       objectReference: {fileID: 0}
     - target: {fileID: 4527189466248270098, guid: fc15b254bd472e949af8b1b931d6ca6d,
         type: 3}

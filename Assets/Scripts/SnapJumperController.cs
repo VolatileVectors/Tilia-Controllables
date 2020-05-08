@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Tilia.Interactions.SnapZone;
 
 public class SnapJumperController : MonoBehaviour
 {
-    public SnapZoneFacade dropZone = null;
+    public SnapZoneFacade dropZone;
 
-    void Start()
+    private void Start()
     {
-        dropZone.Snap(gameObject);
+        ReSnap();
     }
 
     public void SetLastDropZone(GameObject lastDropZone)

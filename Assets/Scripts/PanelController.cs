@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public abstract class PanelController : MonoBehaviour
 {
@@ -10,62 +11,65 @@ public abstract class PanelController : MonoBehaviour
     {
     }
 
-    public string Name = "Panel";
+    [FormerlySerializedAs("Name")] public string panelName = "Panel";
 
-    public List<BulbController> Lights = new List<BulbController>();
-    public AudioCue StateChangeCue;
+    [FormerlySerializedAs("Lights")] public List<BulbController> lights = new List<BulbController>();
 
-    protected List<AudioSource> audioSourcePool = new List<AudioSource>();
-    protected int currentSource = 0;
+    [FormerlySerializedAs("StateChangeCue")]
+    public AudioCue stateChangeCue;
 
-    protected int previousState = 0;
-    protected int currentState = 0;
-    protected int stateCount = 0;
+    private readonly List<AudioSource> _audioSourcePool = new List<AudioSource>();
+    private int _currentSource;
 
-    public PanelEvent StateChangedEvent = new PanelEvent();
+    protected int PreviousState;
+    protected int CurrentState;
+    protected int StateCount = 0;
+
+    [FormerlySerializedAs("StateChangedEvent")]
+    public PanelEvent stateChangedEvent = new PanelEvent();
 
     public virtual void Start()
     {
-        audioSourcePool.AddRange(GetComponents<AudioSource>());
+        _audioSourcePool.AddRange(GetComponents<AudioSource>());
 
-        if (Lights.Count > currentState)
+        if (lights.Count > CurrentState)
         {
-            Lights[currentState].TurnOn();
+            lights[CurrentState].TurnOn();
         }
     }
 
     public virtual void SwitchState(float step)
     {
-        currentState = (int) step;
-        if (previousState != currentState)
+        CurrentState = (int) step;
+        if (PreviousState != CurrentState)
         {
             SetLights();
 
-            if (StateChangeCue)
+            if (stateChangeCue)
             {
-                StateChangeCue.Play(audioSourcePool[currentSource++]);
-                currentSource %= audioSourcePool.Count;
+                stateChangeCue.Play(_audioSourcePool[_currentSource++]);
+                _currentSource %= _audioSourcePool.Count;
             }
 
-            if (StateChangedEvent != null)
+            if (stateChangedEvent != null)
             {
-                StateChangedEvent.Invoke(Name, currentState + 1);
+                stateChangedEvent.Invoke(panelName, CurrentState + 1);
             }
         }
 
-        previousState = currentState;
+        PreviousState = CurrentState;
     }
 
     public virtual void SetLights()
     {
-        if (Lights.Count > previousState && previousState >= 0)
+        if (lights.Count > PreviousState && PreviousState >= 0)
         {
-            Lights[previousState].TurnOff();
+            lights[PreviousState].TurnOff();
         }
 
-        if (Lights.Count > currentState)
+        if (lights.Count > CurrentState)
         {
-            Lights[currentState].TurnOn();
+            lights[CurrentState].TurnOn();
         }
     }
 }

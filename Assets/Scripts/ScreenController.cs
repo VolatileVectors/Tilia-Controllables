@@ -1,14 +1,16 @@
 ﻿using TMPro;
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ScreenController : MonoBehaviour
 {
-    public TextMeshPro TextMesh;
-    protected string[] lines;
-    void Start()
+    [FormerlySerializedAs("TextMesh")] public TextMeshPro textMesh;
+    private string[] _lines;
+
+    private void Start()
     {
-        lines = new string[8];
+        _lines = new string[8];
         ClearMessages();
     }
 
@@ -16,18 +18,20 @@ public class ScreenController : MonoBehaviour
     {
         for (int i = 0; i < 8; ++i)
         {
-            lines[i] = " ";
+            _lines[i] = " ";
         }
-        TextMesh.text = string.Join(Environment.NewLine, lines);
+
+        textMesh.text = string.Join(Environment.NewLine, _lines);
     }
 
-    public void PrintMessage(string name, int state)
+    public void PrintMessage(string msg, int state)
     {
         for (int i = 7; i > 0; --i)
         {
-            lines[i] = lines[i - 1];
+            _lines[i] = _lines[i - 1];
         }
-        lines[0] = name + " set to " + state;
-        TextMesh.text = string.Join(Environment.NewLine, lines);
+
+        _lines[0] = msg + " set to " + state;
+        textMesh.text = string.Join(Environment.NewLine, _lines);
     }
 }

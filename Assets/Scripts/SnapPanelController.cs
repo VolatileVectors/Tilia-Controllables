@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Serialization;
 
 public class SnapPanelController : PanelController
 {
-    public GameObject SnapJumper;
+    [FormerlySerializedAs("SnapJumper")] public GameObject snapJumper;
+
     public override void Start()
     {
-        stateCount = 4;
-        Name = "Snap";
+        StateCount = 4;
+        panelName = "Snap";
         base.Start();
     }
-    
+
     public void ResetPreviousState()
     {
-        previousState = -1;
+        PreviousState = -1;
     }
 }

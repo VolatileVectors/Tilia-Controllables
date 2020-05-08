@@ -1,27 +1,23 @@
-﻿using UnityEngine;
-using System.Collections;
-
-public class SliderPanelController : PanelController
+﻿public class SliderPanelController : PanelController
 {
-    // Start is called before the first frame update
     public override void Start()
     {
-        stateCount = 4;
-        Name = "Slider";
+        StateCount = 4;
+        panelName = "Slider";
         base.Start();
     }
 
     public override void SetLights()
     {
-        for (int i = 0; i < stateCount; ++i)
+        for (int i = 0; i < StateCount; ++i)
         {
-            if (i <= currentState)
+            if (i <= CurrentState)
             {
-                Lights[i].TurnOn();
+                lights[i].TurnOn();
             }
             else
             {
-                Lights[i].TurnOff();
+                lights[i].TurnOff();
             }
         }
     }
